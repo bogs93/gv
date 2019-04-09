@@ -36,6 +36,9 @@ Vue.component('services-table', require('./components/table/ServicesTable.vue').
 Vue.component('tests-table', require('./components/table/TestsTable.vue').default);
 Vue.component('rejections-table', require('./components/table/RejectionsTable.vue').default);
 Vue.component('vehicle-table', require('./components/table/VehicleTable.vue').default);
+Vue.component('addvehicle-form', require('./components/forms/AddVehicle.vue').default);
+Vue.component('addverifica-form', require('./components/forms/AddVerification.vue').default);
+
 /**
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -24,7 +24,7 @@ class VerificationController extends Controller
      */
     public function create()
     {
-        //
+        return view('verifications.create');
     }
 
     /**

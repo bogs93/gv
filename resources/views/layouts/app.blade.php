@@ -63,13 +63,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ __('Reportes') }}</a>
                         </li>
-                               
-                        <li class="nav-item">
-                            <a class="nav-link" href="/verify">{{ __('Verificaciones') }}</a>
-                        </li>   
-                        <li class="nav-item">
-                            <a class="nav-link" href="/vehicles">{{ __('Vehiculos') }}</a>
-                        </li>
+
+                        <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Verificaciones <span class="caret"></span>
+                                </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">                                
+                                <a class="dropdown-item" href="/verify/create">{{ __('Nueva Verificacion') }}</a>
+                                <a class="dropdown-item" href="/verify">{{ __('Consultar Verificacion') }}</a>
+                    
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Vehiculos <span class="caret"></span>
+                            </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">                           
+                            <a class="dropdown-item" href="/vehicles/create">{{ __('Nuevo Vehiculo') }}</a>
+                            <a class="dropdown-item" href="/vehicles">{{ __('Consultar Vehiculo') }}</a>
+
+
+
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -1,6 +1,9 @@
 @extends('layouts.app')
-@section('title' , 'Vehiculos')
+@section('title' , 'Nuevo Vehiculo')
 
 @section('content')
-<p>Hi Create</p>
+
+<addvehicle-form>
+</addvehicle-form>
+
 @endsection
