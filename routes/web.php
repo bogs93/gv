@@ -34,7 +34,7 @@ Route::get('/name/{name}', function($name){
 Route::get('/agenda', function(){
     return view('calendar.index');
 });
-
+Route::get('vehicles/getByMonth', 'VehicleController@getValidationMonths');
 Route::resource('users', 'UserController');
 Route::resource('customers', 'CompanyController');
 Route::resource('services', 'ServiceController');
@@ -51,6 +51,7 @@ Route::get('addVehicle/{id}', 'VehicleController@addVehicle');
 
 Route::get('fisico', 'fisicoReportController@mensual');
 Route::get('emissions', 'EmissionReportController@mensual');
+Route::get('algorithm', 'pruebaController@algorithm');
 
 Auth::routes();
 

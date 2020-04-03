@@ -2198,6 +2198,103 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      response: null,
+      selectedMonth: null,
+      loading: false
+    };
+  },
+  computed: {
+    currentMonth: function currentMonth() {
+      var d = new Date();
+      return d.getMonth();
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    this.selectedMonth = this.currentMonth;
+    this.loading = true;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/vehicles/getByMonth?month=' + this.currentMonth).then(function (response) {
+      _this.response = response.data;
+    }).finally(function () {
+      _this.loading = false;
+    });
+  },
+  methods: {
+    monthChanged: function monthChanged(month) {
+      var _this2 = this;
+
+      this.response = null;
+      this.loading = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/vehicles/getByMonth?month=' + this.selectedMonth).then(function (response) {
+        _this2.response = response.data;
+      }).finally(function () {
+        _this2.loading = false;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/AddCompany.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/AddCompany.vue?vue&type=script&lang=js& ***!
@@ -3655,7 +3752,7 @@ __webpack_require__.r(__webpack_exports__);
     /*axios.get('flujoEtapas')
     .then(res => (this.etapas = res.data))
     .catch(function(err){console.log(err);});
-      axios.get('etapas')
+     axios.get('etapas')
     .then(res => (this.internas = res.data))
     .catch(function(err){console.log(err);});
     */
@@ -9733,7 +9830,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#app {\r\n  font-family: \"Avenir\", Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n.btn-guardar {\r\n\r\n  margin-top: 5%;\n}\n.lpad {\r\n  padding-top: 4%;\r\n  text-align: left;\r\n  padding-left: 4%;\n}\r\n", ""]);
+exports.push([module.i, "\n#app {\n  font-family: \"Avenir\", Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n}\n.btn-guardar {\n\n  margin-top: 5%;\n}\n.lpad {\n  padding-top: 4%;\n  text-align: left;\n  padding-left: 4%;\n}\n", ""]);
 
 // exports
 
@@ -9752,7 +9849,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.vuecal__menu, .vuecal__cell-events-count {background-color: #6cb2eb;}\n.vuecal__cell--has-events {background-color: #fffacd;}\n.vuecal__menu li {border-bottom-color: #fff;color: #fff;}\n.vuecal__menu li.active {background-color: rgba(255, 255, 255, 0.15);}\n.vuecal__title {background-color: #dbf5fe;}\n.vuecal__cell.today, .vuecal__cell.current {background-color: rgba(240, 240, 255, 0.4);}\n.vuecal:not(.vuecal--day-view) .vuecal__cell.selected {background-color: rgba(235, 255, 245, 0.4);}\n.vuecal__cell.selected:before {border-color: rgba(66, 185, 131, 0.5);}\r\n", ""]);
+exports.push([module.i, "\n.vuecal__menu, .vuecal__cell-events-count {background-color: #6cb2eb;}\n.vuecal__cell--has-events {background-color: #fffacd;}\n.vuecal__menu li {border-bottom-color: #fff;color: #fff;}\n.vuecal__menu li.active {background-color: rgba(255, 255, 255, 0.15);}\n.vuecal__title {background-color: #dbf5fe;}\n.vuecal__cell.today, .vuecal__cell.current {background-color: rgba(240, 240, 255, 0.4);}\n.vuecal:not(.vuecal--day-view) .vuecal__cell.selected {background-color: rgba(235, 255, 245, 0.4);}\n.vuecal__cell.selected:before {border-color: rgba(66, 185, 131, 0.5);}\n", ""]);
 
 // exports
 
@@ -52860,6 +52957,140 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=template&id=672c44a9&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=template&id=672c44a9& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _vm._v("\n    Mes:\n    "),
+    _c(
+      "select",
+      {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.selectedMonth,
+            expression: "selectedMonth"
+          }
+        ],
+        on: {
+          change: [
+            function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.selectedMonth = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            },
+            _vm.monthChanged
+          ]
+        }
+      },
+      [
+        _c("option", { attrs: { value: "1" } }, [_vm._v("Enero")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "2" } }, [_vm._v("Febrero")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "3" } }, [_vm._v("Marzo")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "4" } }, [_vm._v("Abril")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "5" } }, [_vm._v("Mayo")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "6" } }, [_vm._v("Junio")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "7" } }, [_vm._v("Julio")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "8" } }, [_vm._v("Agosto")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "9" } }, [_vm._v("Septiembre")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "10" } }, [_vm._v("Octubre")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "11" } }, [_vm._v("Noviembre")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "12" } }, [_vm._v("Diciembre")])
+      ]
+    ),
+    _vm._v(" "),
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c("div", [
+          _c("table", { staticClass: "table" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.response, function(val) {
+                return _c("tr", [
+                  _c("td", [
+                    _c("a", { attrs: { href: "/vehicles/" + val.record.id } }, [
+                      _vm._v(_vm._s(val.record.id))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(val.record.brand))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(val.record.model))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(val.record.plate_number))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(val.algorithm.validationMonths.join(", ")))
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      : _c("div", [_vm._v("\n        Cargando...\n    ")])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", [_vm._v("Id")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Marca")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Modelo")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Placa")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Meses de validación")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/AddCompany.vue?vue&type=template&id=2cc442e7&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/AddCompany.vue?vue&type=template&id=2cc442e7& ***!
@@ -72003,6 +72234,7 @@ Vue.component('add-role-modal', __webpack_require__(/*! ./components/modal/AddRo
 Vue.component('data-modal', __webpack_require__(/*! ./components/modal/DataModalComponent.vue */ "./resources/js/components/modal/DataModalComponent.vue").default); //CALENDAR
 
 Vue.component('calendar-component', __webpack_require__(/*! ./components/calendar/CalendarComponent.vue */ "./resources/js/components/calendar/CalendarComponent.vue").default);
+Vue.component('vehicle-validations-component', __webpack_require__(/*! ./components/calendar/VehicleValidationsComponent.vue */ "./resources/js/components/calendar/VehicleValidationsComponent.vue").default);
 Vue.component('algoritmo-component', __webpack_require__(/*! ./components/calendar/AlgoritmoComponent.vue */ "./resources/js/components/calendar/AlgoritmoComponent.vue").default); //TABLES
 
 Vue.component('table-component', __webpack_require__(/*! ./components/table.vue */ "./resources/js/components/table.vue").default);
@@ -72714,6 +72946,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarComponent_vue_vue_type_template_id_014e4639___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarComponent_vue_vue_type_template_id_014e4639___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/calendar/VehicleValidationsComponent.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/calendar/VehicleValidationsComponent.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _VehicleValidationsComponent_vue_vue_type_template_id_672c44a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VehicleValidationsComponent.vue?vue&type=template&id=672c44a9& */ "./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=template&id=672c44a9&");
+/* harmony import */ var _VehicleValidationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VehicleValidationsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _VehicleValidationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VehicleValidationsComponent_vue_vue_type_template_id_672c44a9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _VehicleValidationsComponent_vue_vue_type_template_id_672c44a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/calendar/VehicleValidationsComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VehicleValidationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./VehicleValidationsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VehicleValidationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=template&id=672c44a9&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=template&id=672c44a9& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VehicleValidationsComponent_vue_vue_type_template_id_672c44a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./VehicleValidationsComponent.vue?vue&type=template&id=672c44a9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calendar/VehicleValidationsComponent.vue?vue&type=template&id=672c44a9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VehicleValidationsComponent_vue_vue_type_template_id_672c44a9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VehicleValidationsComponent_vue_vue_type_template_id_672c44a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -74645,8 +74946,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/c/users/admin/documents/garro/blog/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/c/users/admin/documents/garro/blog/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/d/Projects/gv/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/d/Projects/gv/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

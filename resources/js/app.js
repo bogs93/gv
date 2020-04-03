@@ -31,6 +31,7 @@ Vue.component('add-role-modal', require('./components/modal/AddRoleModal.vue').d
 Vue.component('data-modal', require('./components/modal/DataModalComponent.vue').default);
 //CALENDAR
 Vue.component('calendar-component', require('./components/calendar/CalendarComponent.vue').default);
+Vue.component('vehicle-validations-component', require('./components/calendar/VehicleValidationsComponent.vue').default);
 Vue.component('algoritmo-component', require('./components/calendar/AlgoritmoComponent.vue').default);
 //TABLES
 Vue.component('table-component', require('./components/table.vue').default);

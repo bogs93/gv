@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Helpers\AlgorithmHelper\AlgorithmHelper;
 use App\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -148,5 +149,20 @@ class VehicleController extends Controller
     public function addVehicle($id)
     {
             return view('vehicles.create',compact('id'));
+    }
+
+    public function getValidationMonths(Request $request){
+        $intMonth = $request->input('month');
+        $month = AlgorithmHelper::numToMonth($intMonth);
+        $algorithmResponse = [];
+        $vehicles = Vehicle::all();
+        foreach($vehicles as $vehicle){
+            $d = ['record' => $vehicle, 'algorithm' => $vehicle->validationMonths()];
+            array_push($algorithmResponse, $d);
+        }
+        $response = collect($algorithmResponse)->filter(function ($r) use($month){
+            return in_array($month, $r['algorithm']['validationMonths']);
+        });
+        return response()->json($response,200);
     }
 }
