@@ -53,6 +53,8 @@ Route::get('fisico', 'fisicoReportController@mensual');
 Route::get('emissions', 'EmissionReportController@mensual');
 Route::get('algorithm', 'pruebaController@algorithm');
 
+Route::get('findUser/{id}', 'UserController@findUser');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

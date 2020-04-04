@@ -22,6 +22,18 @@
     </div>
     <div iv class="row lpad">
       <div class="col-md">
+        <label for="series">Correo</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="mail" v-model="cliente.email" disabled>
+        <input v-else type="text" class="form-control" id="mail" v-model="cliente.email">
+      </div>
+      <div class="col-md">
+        <label for="series">RFC</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="rfc" v-model="cliente.rfc" disabled>
+        <input v-else type="text" class="form-control" id="rfc" v-model="cliente.rfc">
+      </div>
+  </div>
+    <div iv class="row lpad">
+      <div class="col-md">
         <label for="series">Nombre de Contacto</label>
         <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="nameContact" v-model="cliente.contact" disabled>
         <input v-else type="text" class="form-control" id="nameContact" v-model="cliente.contact">
@@ -54,13 +66,7 @@
         <input v-else type="text" class="form-control" id="cp" v-model="cliente.cp">
     </div>
     </div>
-    <div iv class="row lpad">
-      <div class="col-md">
-        <label for="series">Correo</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="mail" v-model="cliente.email" disabled>
-        <input v-else type="text" class="form-control" id="mail" v-model="cliente.email">
-      </div>
-  </div>
+
     <div iv class="row justify-content-center">
       <div class="col-md-4">
         <button v-if="this.onlyshow!='disabled'" @click="save()" class="btn btn-outline-primary btn-md btn-guardar">Guardar</button>
@@ -95,52 +101,25 @@ export default {
   },
   created() {
     this.cliente = Object.assign({}, this.data);
-    /*if (this.cliente != null) {
-        this.cliente.user_id = this.cliente;
-    }*/
-    axios
-      .get("/users")
-      .then(res => (this.clientes = res.data))
-      .catch(function(err) {
-        console.log(err);
-      });
-    axios
-      .get("/axes")
-      .then(res => (this.sejes = res.data))
-      .catch(function(err) {
-        console.log(err);
-      });
-    axios
-      .get("/services")
-      .then(res => (this.sserv = res.data))
-      .catch(function(err) {
-        console.log(err);
-      });
-    axios
-      .get("/engines")
-      .then(res => (this.smotor = res.data))
-      .catch(function(err) {
-        console.log(err);
-      });
+
   },
   methods:{
       save(){
-          if (this.vehicle.id==null) {
+          if (this.cliente.id==null) {
               axios
-                .post("/vehicles", {
-                  brand: this.vehicle.brand,
-                  model: this.vehicle.model,
-                  series: this.vehicle.series,
-                  plate_number: this.vehicle.plate_number,
-                  folio_circulation: this.vehicle.folio_circulation,
-                  capacity: this.vehicle.capacity,
-                  axes_id: this.vehicle.axes_id,
-                  engine_id: this.vehicle.engine_id,
-                  service_id: this.vehicle.service_id,
-                  user_id: this.vehicle.user_id
+                .post("/customers", {
+                  name: this.cliente.name,
+                  email: this.cliente.email,
+                  rfc: this.cliente.rfc,
+                  cellphone: this.cliente.cellphone,
+                  contact: this.cliente.contact,
+                  address: this.cliente.address,
+                  municipality: this.cliente.municipality,
+                  state: this.cliente.state,
+                  cp: this.cliente.cp
                 })
                 .then(function(res) {
-                        var ruta = '/showVehicles/'+res.data.vehicle.user_id;
+                        var ruta = '/customers/';
                         location.href=ruta;
                 })
                 .catch(function(err) {
@@ -148,20 +127,21 @@ export default {
                 });
           }else {
               axios
-                .put("/vehicles/" + this.vehicle.id, {
-                    brand: this.vehicle.brand,
-                    model: this.vehicle.model,
-                    series: this.vehicle.series,
-                    plate_number: this.vehicle.plate_number,
-                    folio_circulation: this.vehicle.folio_circulation,
-                    capacity: this.vehicle.capacity,
-                    axes_id: this.vehicle.axes_id,
-                    engine_id: this.vehicle.engine_id,
-                    service_id: this.vehicle.service_id,
-                    user_id: this.vehicle.user_id
+                .put("/customers/" + this.cliente.id, {
+                    name: this.cliente.name,
+                    company_id: this.cliente.company_id,
+                    email: this.cliente.email,
+                    rfc: this.cliente.rfc,
+                    cellphone: this.cliente.cellphone,
+                    contact: this.cliente.contact,
+                    address: this.cliente.address,
+                    municipality: this.cliente.municipality,
+                    state: this.cliente.state,
+                    cp: this.cliente.cp,
+                    user_id: this.cliente.user_id
                 })
                 .then(function(res) {
-                    var ruta = '/showVehicles/'+res.data.vehicle.user_id;
+                    var ruta = '/customers/';
                     location.href=ruta;
                 })
                 .catch(function(err) {

@@ -2379,6 +2379,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2402,68 +2408,42 @@ __webpack_require__.r(__webpack_exports__);
     onlyshow: String
   },
   created: function created() {
-    var _this = this;
-
     this.cliente = Object.assign({}, this.data);
-    /*if (this.cliente != null) {
-        this.cliente.user_id = this.cliente;
-    }*/
-
-    axios.get("/users").then(function (res) {
-      return _this.clientes = res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-    axios.get("/axes").then(function (res) {
-      return _this.sejes = res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-    axios.get("/services").then(function (res) {
-      return _this.sserv = res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-    axios.get("/engines").then(function (res) {
-      return _this.smotor = res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
   },
   methods: {
     save: function save() {
-      if (this.vehicle.id == null) {
-        axios.post("/vehicles", {
-          brand: this.vehicle.brand,
-          model: this.vehicle.model,
-          series: this.vehicle.series,
-          plate_number: this.vehicle.plate_number,
-          folio_circulation: this.vehicle.folio_circulation,
-          capacity: this.vehicle.capacity,
-          axes_id: this.vehicle.axes_id,
-          engine_id: this.vehicle.engine_id,
-          service_id: this.vehicle.service_id,
-          user_id: this.vehicle.user_id
+      if (this.cliente.id == null) {
+        axios.post("/customers", {
+          name: this.cliente.name,
+          email: this.cliente.email,
+          rfc: this.cliente.rfc,
+          cellphone: this.cliente.cellphone,
+          contact: this.cliente.contact,
+          address: this.cliente.address,
+          municipality: this.cliente.municipality,
+          state: this.cliente.state,
+          cp: this.cliente.cp
         }).then(function (res) {
-          var ruta = '/showVehicles/' + res.data.vehicle.user_id;
+          var ruta = '/customers/';
           location.href = ruta;
         }).catch(function (err) {
           console.log(err);
         });
       } else {
-        axios.put("/vehicles/" + this.vehicle.id, {
-          brand: this.vehicle.brand,
-          model: this.vehicle.model,
-          series: this.vehicle.series,
-          plate_number: this.vehicle.plate_number,
-          folio_circulation: this.vehicle.folio_circulation,
-          capacity: this.vehicle.capacity,
-          axes_id: this.vehicle.axes_id,
-          engine_id: this.vehicle.engine_id,
-          service_id: this.vehicle.service_id,
-          user_id: this.vehicle.user_id
+        axios.put("/customers/" + this.cliente.id, {
+          name: this.cliente.name,
+          company_id: this.cliente.company_id,
+          email: this.cliente.email,
+          rfc: this.cliente.rfc,
+          cellphone: this.cliente.cellphone,
+          contact: this.cliente.contact,
+          address: this.cliente.address,
+          municipality: this.cliente.municipality,
+          state: this.cliente.state,
+          cp: this.cliente.cp,
+          user_id: this.cliente.user_id
         }).then(function (res) {
-          var ruta = '/showVehicles/' + res.data.vehicle.user_id;
+          var ruta = '/customers/';
           location.href = ruta;
         }).catch(function (err) {
           console.log(err);
@@ -2581,25 +2561,15 @@ __webpack_require__.r(__webpack_exports__);
           console.log(err);
         });
       } else {
-        axios; // .put("/users/" + this.cliente.id, {
-        //     brand: this.vehicle.brand,
-        //     model: this.vehicle.model,
-        //     series: this.vehicle.series,
-        //     plate_number: this.vehicle.plate_number,
-        //     folio_circulation: this.vehicle.folio_circulation,
-        //     capacity: this.vehicle.capacity,
-        //     axes_id: this.vehicle.axes_id,
-        //     engine_id: this.vehicle.engine_id,
-        //     service_id: this.vehicle.service_id,
-        //     user_id: this.vehicle.user_id
-        // })
-        // .then(function(res) {
-        //     var ruta = '/showVehicles/'+res.data.vehicle.user_id;
-        //     location.href=ruta;
-        // })
-        // .catch(function(err) {
-        //   console.log(err);
-        // });
+        axios.put("/users/" + this.cliente.id, {
+          email: this.cliente.email,
+          name: this.cliente.name
+        }).then(function (res) {
+          var ruta = '/users';
+          location.href = ruta;
+        }).catch(function (err) {
+          console.log(err);
+        });
       }
     },
     cancel: function cancel() {
@@ -2723,10 +2693,12 @@ __webpack_require__.r(__webpack_exports__);
       capacidad: "",
       motors: "",
       smotor: [],
+      suser: [],
       axes: "",
       sejes: [],
       servi: "",
-      sserv: []
+      sserv: [],
+      usuaroBuscado: []
     };
   },
   mounted: function mounted() {
@@ -2734,6 +2706,11 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("/axes").then(function (res) {
       return _this.sejes = res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+    axios.get("/findUser/" + this.vehicle.user_id).then(function (res) {
+      return _this.suser = res.data;
     }).catch(function (err) {
       console.log(err);
     });
@@ -3163,6 +3140,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3186,7 +3164,8 @@ __webpack_require__.r(__webpack_exports__);
       clientes: [],
       smotor: [],
       sejes: [],
-      sserv: []
+      sserv: [],
+      suser: []
     };
   },
   props: {
@@ -3210,6 +3189,11 @@ __webpack_require__.r(__webpack_exports__);
     });
     axios.get("/axes").then(function (res) {
       return _this.sejes = res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+    axios.get("/findUser/" + this.vehicle.user_id).then(function (res) {
+      return _this.suser = res.data;
     }).catch(function (err) {
       console.log(err);
     });
@@ -4123,8 +4107,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _even_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../even-bus */ "./resources/js/even-bus.js");
 /* harmony import */ var _DetailVueTableComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DetailVueTableComponent */ "./resources/js/components/table/DetailVueTableComponent.vue");
-//
-//
 //
 //
 //
@@ -53186,6 +53168,104 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row lpad", attrs: { iv: "" } }, [
       _c("div", { staticClass: "col-md" }, [
+        _c("label", { attrs: { for: "series" } }, [_vm._v("Correo")]),
+        _vm._v(" "),
+        this.onlyshow == "disabled"
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.cliente.email,
+                  expression: "cliente.email"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "mail", disabled: "" },
+              domProps: { value: _vm.cliente.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.cliente, "email", $event.target.value)
+                }
+              }
+            })
+          : _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.cliente.email,
+                  expression: "cliente.email"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "mail" },
+              domProps: { value: _vm.cliente.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.cliente, "email", $event.target.value)
+                }
+              }
+            })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md" }, [
+        _c("label", { attrs: { for: "series" } }, [_vm._v("RFC")]),
+        _vm._v(" "),
+        this.onlyshow == "disabled"
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.cliente.rfc,
+                  expression: "cliente.rfc"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "rfc", disabled: "" },
+              domProps: { value: _vm.cliente.rfc },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.cliente, "rfc", $event.target.value)
+                }
+              }
+            })
+          : _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.cliente.rfc,
+                  expression: "cliente.rfc"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "rfc" },
+              domProps: { value: _vm.cliente.rfc },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.cliente, "rfc", $event.target.value)
+                }
+              }
+            })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row lpad", attrs: { iv: "" } }, [
+      _c("div", { staticClass: "col-md" }, [
         _c("label", { attrs: { for: "series" } }, [
           _vm._v("Nombre de Contacto")
         ]),
@@ -53478,56 +53558,6 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row lpad", attrs: { iv: "" } }, [
-      _c("div", { staticClass: "col-md" }, [
-        _c("label", { attrs: { for: "series" } }, [_vm._v("Correo")]),
-        _vm._v(" "),
-        this.onlyshow == "disabled"
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.cliente.email,
-                  expression: "cliente.email"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "mail", disabled: "" },
-              domProps: { value: _vm.cliente.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.cliente, "email", $event.target.value)
-                }
-              }
-            })
-          : _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.cliente.email,
-                  expression: "cliente.email"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "mail" },
-              domProps: { value: _vm.cliente.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.cliente, "email", $event.target.value)
-                }
-              }
-            })
-      ])
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row justify-content-center", attrs: { iv: "" } },
@@ -53720,8 +53750,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: this.onlyshow != "disabled",
-            expression: "this.onlyshow!='disabled'"
+            value: this.cliente.id == null,
+            expression: "this.cliente.id==null"
           }
         ],
         staticClass: "row lpad"
@@ -53847,7 +53877,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row lpad", attrs: { iv: "" } }, [
       _c("div", { staticClass: "col-md-4" }, [
-        _c("label", { attrs: { for: "empresa" } }, [_vm._v("Empresa")]),
+        _c("label", { attrs: { for: "empresa" } }, [_vm._v("Empres2a")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -54171,7 +54201,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "row justify-content-between" }, [
               _c("h3", { staticClass: "text-left" }, [
                 _c("i", { staticClass: "fas fa-car" }),
-                _vm._v("\n              Nuevo Ingreso Vehiculo\n            ")
+                _vm._v("\n              Nuevo Ingreso Vehiculo++\n            ")
               ])
             ])
           ])
@@ -55114,44 +55144,27 @@ var render = function() {
       _c("div", { staticClass: "col-md-4" }, [
         _c("label", { attrs: { for: "empresa" } }, [_vm._v("Empresa")]),
         _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.vehicle.user_id,
-                expression: "vehicle.user_id"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { disabled: "", id: "serv" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.vehicle,
-                  "user_id",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                )
-              }
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.suser.name,
+              expression: "suser.name"
             }
-          },
-          _vm._l(_vm.clientes, function(cliente) {
-            return _c("option", { domProps: { value: cliente.id } }, [
-              _vm._v(_vm._s(cliente.name))
-            ])
-          }),
-          0
-        )
+          ],
+          staticClass: "form-control",
+          attrs: { disabled: "", type: "text", id: "brand" },
+          domProps: { value: _vm.suser.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.suser, "name", $event.target.value)
+            }
+          }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [
@@ -55723,7 +55736,14 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "btn btn-outline-danger btn-md btn-guardar" },
+            {
+              staticClass: "btn btn-outline-danger btn-md btn-guardar",
+              on: {
+                click: function($event) {
+                  return _vm.goBack()
+                }
+              }
+            },
             [_vm._v("Cancelar")]
           )
         ])
@@ -57204,8 +57224,6 @@ var render = function() {
             fields: [
               { name: "name", title: "Nombre", dataClass: "text-left" },
               { name: "email", title: "Correo", dataClass: "text-left" },
-              { name: "tel", title: "Telefono", dataClass: "text-left" },
-              { name: "address", title: "Direccion", dataClass: "text-left" },
               {
                 name: "__slot:vehicles",
                 title: "Vehiculos",
@@ -57246,7 +57264,7 @@ var staticRenderFns = [
             {
               staticClass: "btn btn-outline-primary btn-sm",
               staticStyle: { "margin-bottom": "1%" },
-              attrs: { href: "/users/create" }
+              attrs: { href: "/customers/create" }
             },
             [_vm._v("Agregar +")]
           )

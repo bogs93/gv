@@ -29,7 +29,7 @@
       </div>
   </div>
 
-  <div v-show="this.onlyshow!='disabled'" class="row lpad">
+  <div v-show="this.cliente.id==null" class="row lpad">
       <div class="col-md">
         <label for="series">Contraseña</label>
         <input type="text" class="form-control" id="mail" v-model="cliente.password">
@@ -93,25 +93,17 @@ export default {
                 });
           }else {
               axios
-                // .put("/users/" + this.cliente.id, {
-                //     brand: this.vehicle.brand,
-                //     model: this.vehicle.model,
-                //     series: this.vehicle.series,
-                //     plate_number: this.vehicle.plate_number,
-                //     folio_circulation: this.vehicle.folio_circulation,
-                //     capacity: this.vehicle.capacity,
-                //     axes_id: this.vehicle.axes_id,
-                //     engine_id: this.vehicle.engine_id,
-                //     service_id: this.vehicle.service_id,
-                //     user_id: this.vehicle.user_id
-                // })
-                // .then(function(res) {
-                //     var ruta = '/showVehicles/'+res.data.vehicle.user_id;
-                //     location.href=ruta;
-                // })
-                // .catch(function(err) {
-                //   console.log(err);
-                // });
+                .put("/users/" + this.cliente.id, {
+                    email: this.cliente.email,
+                    name: this.cliente.name
+                })
+                .then(function(res) {
+                    var ruta = '/users';
+                    location.href=ruta;
+                })
+                .catch(function(err) {
+                  console.log(err);
+                });
           }
       },
       cancel(){

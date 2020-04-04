@@ -98,7 +98,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->email=$request->input('email');
+        $user->name=$request->input('name');
+        $user->save();
+
+        return response()->json([
+            "message" => "Usuario Actualizado Correctamente.",
+            "axes" =>$user
+        ],200);
     }
 
     /**
@@ -111,5 +119,14 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+    }
+
+    public function findUser(Request $request,$id)
+    {
+        $user = User::find($request->id);
+        // $credito = DB::table('TRABAJO')
+        //             ->where('numcred', '=', $request->searchValue)
+        //             ->get();
+        return response()->json($user,200);
     }
 }

@@ -22,9 +22,10 @@
     <div iv class="row lpad">
       <div class="col-md-4">
         <label for="empresa">Empresa</label>
-        <select disabled class="form-control" id="serv" v-model="vehicle.user_id">
-          <option v-for="cliente in clientes" v-bind:value="cliente.id">{{ cliente.name }}</option>
-        </select>
+        <!-- <select disabled class="form-control" id="serv" v-model="vehicle.user_id">
+          <option v-for="cliente in suser" v-bind:value="cliente.id">{{ cliente.name }}</option>
+        </select> -->
+        <input disabled type="text" class="form-control" id="brand" v-model="suser.name">
       </div>
       <div class="col-md-4">
         <label for="brand">Marca</label>
@@ -91,7 +92,7 @@
     <div iv class="row justify-content-center">
       <div class="col-md-4">
         <button v-if="this.onlyshow!='disabled'" @click="save()" class="btn btn-outline-primary btn-md btn-guardar">Guardar</button>
-        <button class="btn btn-outline-danger btn-md btn-guardar">Cancelar</button>
+        <button class="btn btn-outline-danger btn-md btn-guardar" @click="goBack()">Cancelar</button>
       </div>
     </div>
   </div>
@@ -121,7 +122,8 @@ export default {
       clientes:[],
       smotor: [],
       sejes: [],
-      sserv: []
+      sserv: [],
+      suser:[]
     };
   },
   props: {
@@ -146,6 +148,12 @@ export default {
       .catch(function(err) {
         console.log(err);
       });
+      axios
+        .get("/findUser/"+this.vehicle.user_id)
+        .then(res => (this.suser = res.data))
+        .catch(function(err) {
+          console.log(err);
+        });
     axios
       .get("/services")
       .then(res => (this.sserv = res.data))

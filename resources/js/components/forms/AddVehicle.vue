@@ -7,7 +7,7 @@
             <div class="row justify-content-between">
               <h3 class="text-left">
                 <i class="fas fa-car"></i>
-                Nuevo Ingreso Vehiculo
+                Nuevo Ingreso Vehiculo++
               </h3>
             </div>
           </div>
@@ -17,7 +17,7 @@
     <!-- Columna1/3-->
     <div iv class="row lpad">
       <div class="col-md-4">
-        <label for="empresa">Empresa</label>
+        <label for="empresa">Empres2a</label>
         <input type="text" class="form-control" placeholder="Empresa" v-model="empresa">
       </div>
       <div class="col-md-4">
@@ -101,10 +101,12 @@ export default {
       capacidad: "",
       motors: "",
       smotor: [],
+      suser: [],
       axes: "",
       sejes: [],
       servi: "",
-      sserv: []
+      sserv: [],
+      usuaroBuscado:[]
     };
   },
   mounted() {
@@ -114,6 +116,13 @@ export default {
       .catch(function(err) {
         console.log(err);
       });
+
+      axios
+        .get("/findUser/"+this.vehicle.user_id)
+        .then(res => (this.suser = res.data))
+        .catch(function(err) {
+          console.log(err);
+        });
 
     axios
       .get("/services")
